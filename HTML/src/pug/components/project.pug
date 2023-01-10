@@ -1,0 +1,71 @@
+include title.pug
+include cards/general.pug
+
+-
+  var projectData = [
+    {
+      img: imgAPI.architect[1],
+      title: 'Basic Services',
+      desc: 'We will often include a site where the built structures might be located.'
+    },
+    {
+      img: imgAPI.architect[2],
+      title: 'Schematic Design',
+      desc: 'Some architects produce only floor plans and site plans at this stage, often for SFR projects.'
+    },
+    {
+      img: imgAPI.architect[3],
+      title: 'Commercial Projects:',
+      desc: 'Where it is quite common to see plans, elevations and conceptual building sections.'
+    },
+    {
+      img: imgAPI.architect[1],
+      title: 'Construction Documents',
+      desc: 'The architect does coordinate all the building consultants, whether provided under the architect’s.'
+    },
+    {
+      img: imgAPI.architect[2],
+      title: 'Design Development',
+      desc: 'Additional dimensions are tested to insure that various items will fit into the proposed design.'
+    },
+    {
+      img: imgAPI.architect[3],
+      title: 'Additional Services',
+      desc: 'In order to design new improvements, we have drawings depicting what exists.'
+    }
+  ]
+
+.root
+  .parallax-wrap
+    include parallax/dot.pug
+  .container
+    .floating-title
+      +title-main($t.architect_landing.project_title, $t.architect_landing.project_desc)
+  .slider-wrap
+    .carousel
+      .slick-carousel#project_carousel(data-length=projectData.length)
+        .props.item-props-first.show-md-up
+          div
+        each item in projectData
+          .item
+            +general-card(item.img, item.title, item.desc)
+        .props.item-props-last.show-md-up
+          div
+      |
+      |
+      button.btn-floating.nav.prev.waves-effect#prev_project
+        |
+        |
+        i.ion-ios-arrow-left
+        |
+        |
+      |
+      |
+      button.btn-floating.nav.next.waves-effect#next_project
+        |
+        |
+        i.ion-ios-arrow-right
+        |
+        |
+      |
+      |
